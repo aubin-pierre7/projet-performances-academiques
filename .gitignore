@@ -1,0 +1,9 @@
+venv/
+__pycache__/
+*.pyc
+*.pkl
+.env
+instance/
+*.db
+.DS_Store
+static/graphs/*.png
