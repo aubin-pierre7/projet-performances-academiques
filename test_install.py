@@ -11,4 +11,4 @@ def test_imports():
     except ImportError as e:
         print(f"ERREUR : {e}")
 
-test_imports()
+test_imports() 
