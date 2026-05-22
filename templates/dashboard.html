@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Dashboard — Performances Académiques{% endblock %}
+{% block content %}
+<div class="page-header">
+    <h1>📊 Dashboard Analytique</h1>
+    <p>Analyse exploratoire complète des performances académiques de 395 élèves</p>
+</div>
+<div class="graphs-grid">
+    {% for graph in graphs %}
+    <div class="graph-card">
+        <h3>{{ graph.titre }}</h3>
+        <img src="{{ url_for('static', filename='graphs/' + graph.filename) }}"
+             alt="{{ graph.titre }}" class="graph-img">
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
