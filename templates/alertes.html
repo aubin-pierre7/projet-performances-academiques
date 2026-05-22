@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% block title %}Alertes — Performances Académiques{% endblock %}
+{% block content %}
+<div class="page-header">
+    <h1>🚨 Système d'Alertes</h1>
+    <p>Élèves identifiés à risque d'échec par le modèle Random Forest</p>
+</div>
+
+<div class="risk-summary">
+    <div class="risk-card risk-vert">
+        <div class="risk-number">{{ stats_risque.vert }}</div>
+        <div class="risk-label">✅ Faible risque</div>
+    </div>
+    <div class="risk-card risk-orange">
+        <div class="risk-number">{{ stats_risque.orange }}</div>
+        <div class="risk-label">⚠️ Risque modéré</div>
+    </div>
+    <div class="risk-card risk-rouge">
+        <div class="risk-number">{{ stats_risque.rouge }}</div>
+        <div class="risk-label">🚨 Risque élevé</div>
+    </div>
+</div>
+
+<div class="alert-section">
+    <h2>🚨 Élèves à risque élevé (Rouge)</h2>
+    <p>Ces {{ stats_risque.rouge }} élèves nécessitent une intervention immédiate.</p>
+    <table class="alert-table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Âge</th>
+                <th>Sexe</th>
+                <th>Absences</th>
+                <th>G1</th>
+                <th>G2</th>
+                <th>G3 réel</th>
+                <th>Score risque</th>
+                <th>Statut</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for eleve in eleves_rouge %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ eleve.age }}</td>
+                <td>{{ 'M' if eleve.sex == 1 else 'F' }}</td>
+                <td>{{ eleve.absences }}</td>
+                <td>{{ eleve.G1 }}</td>
+                <td>{{ eleve.G2 }}</td>
+                <td>{{ eleve.G3 }}</td>
+                <td>{{ (eleve.risk_score * 100)|round(1) }}%</td>
+                <td><span class="badge badge-rouge">🚨 Risque élevé</span></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% if eleves_orange %}
+<div class="alert-section">
+    <h2>⚠️ Élèves à risque modéré (Orange)</h2>
+    <table class="alert-table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Âge</th>
+                <th>Sexe</th>
+                <th>Absences</th>
+                <th>G1</th>
+                <th>G2</th>
+                <th>G3 réel</th>
+                <th>Score risque</th>
+                <th>Statut</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for eleve in eleves_orange %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td>{{ eleve.age }}</td>
+                <td>{{ 'M' if eleve.sex == 1 else 'F' }}</td>
+                <td>{{ eleve.absences }}</td>
+                <td>{{ eleve.G1 }}</td>
+                <td>{{ eleve.G2 }}</td>
+                <td>{{ eleve.G3 }}</td>
+                <td>{{ (eleve.risk_score * 100)|round(1) }}%</td>
+                <td><span class="badge badge-orange">⚠️ Risque modéré</span></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endif %}
+{% endblock %}
