@@ -2,22 +2,22 @@
 {% block title %}Alertes — Performances Académiques{% endblock %}
 {% block content %}
 <div class="page-header">
-    <h1>🚨 Système d'Alertes</h1>
+    <h1> Système d'Alertes</h1>
     <p>Élèves identifiés à risque d'échec par le modèle Random Forest</p>
 </div>
 
 <div class="risk-summary">
     <div class="risk-card risk-vert">
         <div class="risk-number">{{ stats_risque.vert }}</div>
-        <div class="risk-label">✅ Faible risque</div>
+        <div class="risk-label"> Faible risque</div>
     </div>
     <div class="risk-card risk-orange">
         <div class="risk-number">{{ stats_risque.orange }}</div>
-        <div class="risk-label">⚠️ Risque modéré</div>
+        <div class="risk-label"> Risque modéré</div>
     </div>
     <div class="risk-card risk-rouge">
         <div class="risk-number">{{ stats_risque.rouge }}</div>
-        <div class="risk-label">🚨 Risque élevé</div>
+        <div class="risk-label"> Risque élevé</div>
     </div>
 </div>
 
@@ -49,7 +49,7 @@
                 <td>{{ eleve.G2 }}</td>
                 <td>{{ eleve.G3 }}</td>
                 <td>{{ (eleve.risk_score * 100)|round(1) }}%</td>
-                <td><span class="badge badge-rouge">🚨 Risque élevé</span></td>
+                <td><span class="badge badge-rouge"> Risque élevé</span></td>
             </tr>
             {% endfor %}
         </tbody>
@@ -58,7 +58,7 @@
 
 {% if eleves_orange %}
 <div class="alert-section">
-    <h2>⚠️ Élèves à risque modéré (Orange)</h2>
+    <h2> Élèves à risque modéré (Orange)</h2>
     <table class="alert-table">
         <thead>
             <tr>
@@ -84,7 +84,7 @@
                 <td>{{ eleve.G2 }}</td>
                 <td>{{ eleve.G3 }}</td>
                 <td>{{ (eleve.risk_score * 100)|round(1) }}%</td>
-                <td><span class="badge badge-orange">⚠️ Risque modéré</span></td>
+                <td><span class="badge badge-orange"> Risque modéré</span></td>
             </tr>
             {% endfor %}
         </tbody>
