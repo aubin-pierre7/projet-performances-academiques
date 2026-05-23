@@ -2,7 +2,7 @@
 {% block title %}Prédiction — Performances Académiques{% endblock %}
 {% block content %}
 <div class="page-header">
-    <h1>🤖 Prédiction de Réussite</h1>
+    <h1> Prédiction de Réussite</h1>
     <p>Entrez le profil d'un élève pour prédire ses chances de réussite</p>
 </div>
 
@@ -100,20 +100,20 @@
         </div>
 
         <button type="submit" class="btn btn-primary btn-large">
-            🔮 Prédire la réussite
+             Prédire la réussite
         </button>
     </form>
 
     {% if result %}
     <div class="result-card result-{{ result.risk_level }}">
         {% if result.risk_level == 'vert' %}
-            <div class="result-icon">✅</div>
+            <div class="result-icon"></div>
             <h2>Faible risque d'échec</h2>
         {% elif result.risk_level == 'orange' %}
-            <div class="result-icon">⚠️</div>
+            <div class="result-icon"></div>
             <h2>Risque modéré</h2>
         {% else %}
-            <div class="result-icon">🚨</div>
+            <div class="result-icon"></div>
             <h2>Risque élevé d'échec</h2>
         {% endif %}
         <div class="result-details">
