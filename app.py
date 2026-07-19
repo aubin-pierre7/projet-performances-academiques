@@ -13,9 +13,7 @@ app.config.from_object(Config)
 with app.app_context():
     init_db()
 
-# ============================================================
 # ROUTE 1 : Page d'accueil
-# ============================================================
 @app.route('/')
 def index():
     df = pd.read_csv(Config.DATA_PATH, sep=';')
